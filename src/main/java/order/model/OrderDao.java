@@ -23,4 +23,22 @@ public class OrderDao {
 	return lists;
     }
     
+    
+    public void insertNewPstock(int dnum,String id, String pname, String pimage,
+            int price, int pqty) {
+	Order od = new Order();
+	od.setDnum(dnum);
+	od.setMid(id);
+	od.setPname(pname);
+	od.setPimage(pimage);
+	od.setPrice(price);
+	od.setOqty(pqty);
+	
+	sqlsessionTemplate.insert(namespace+".InsertNewPstock", od);
+	
+	}
+    
+    
+    
+    
 }

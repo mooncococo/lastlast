@@ -25,13 +25,22 @@ body {
 	width: 100%;
 	text-align: center;
 }
-
-table {
-	margin: 0 auto;
-}
+ 
 .content {
-	margin-top: 20vh;
+	align:center;
+	width: 75%;  
+	margin-top: 3vh;
+	margin:	1vw auto;
 }
+.content2 {
+	width: 75%;
+    margin-top: 20vh;
+    margin: 9vw auto;
+}
+form {
+	align : center;
+}
+
 </style>
 
 <%
@@ -39,11 +48,12 @@ table {
 %>
 <body>
 	<%@ include file="../admin/admin_top_4.jsp"%>
-	<div>
-	<h1><p align="center">글 내용보기</p></h1>
+	<div class="content">
+	<h1><p>글 내용보기</p></h1>
 	<form action="content.bd" method="post">
-	<input type="hidden" name="num" value="${bean.num }">
-	<input type="hidden" name="ccnum" value="${bean.num }">
+	<input type="hidden" name="cnum" value="${bean.num }">
+		<input type="hidden" name="num" value="${bean.num }">
+
 	
 		<table class="table">
 			 <tbody>
@@ -72,23 +82,21 @@ table {
 				<td colspan="3" align="center">${bean.content }</td>
 			</tr>  
 
-	
-	
-
 			<tr>
-				<td><br><br><p align="center">이름</p><input type="text" name="cname" value="" vertical-align="middle"></td>
+				<td><br><br><br><input type="text" name="cname" value="" vertical-align="middle"></td>
 				<td colspan="2"><textarea rows="8" cols="200" name="crecom"></textarea>
 				</td>
 				<td align="right"><br><br><br><input type="submit" value="등록하기"></td>
 			</tr>
 
 			<tr>    
-				<td><br><br><p align="center">이름</p><input type="text" name="cname"
-					value="${boardComments.cname }" disabled></td>
-				<td colspan="3"><textarea rows="8" cols="200" name="crecom" disabled>${boardComments.crecom }</textarea>
+				<td><br><br><br><input type="text" name="cname"
+					value="${ boardComments.get(0).getCname()}" disabled></td>
+				<td colspan="3"><textarea rows="8" cols="200" name="crecom" disabled>${ boardComments.get(0).getCrecom()}</textarea>
 				</td> 
 				
 			</tr>
+				
 
 			<tr>
 				<td colspan=4 align="center" height="30">
@@ -111,11 +119,11 @@ table {
 	%>	
 	<body>
 		<%@ include file="../user/user_top_4.jsp"%>
-		<div class="content">
-		<h1><p align="center">글 내용보기</p></h1>
-		<form action="content.bd" method="post">
+		<div class="content2">
+		<h1><p>글 내용보기</p></h1>
+			<input type="hidden" name="cnum" value="${bean.num }">
 			<input type="hidden" name="num" value="${bean.num }">
-	<input type="hidden" name="ccnum" value="${bean.num }">
+	
 			<table class="table">
 			
 			 <tbody>
@@ -144,23 +152,16 @@ table {
 				<td colspan="3" align="center">${bean.content }</td>
 			</tr>  
 
-<input type="hidden" name="cnum" value="${bean.num }">	
-<input type="hidden" name="num" value="${bean.num }">	
 
-			<tr>
-				<td><br><br><p align="center">이름</p><input type="text" name="cname" value="" vertical-align="middle"></td>
-				<td colspan="2"><textarea rows="8" cols="200" name="crecom"></textarea>
-				</td>
-				<td align="right"><br><br><br><input type="submit" value="등록하기"></td>
-			</tr>
 
-			<tr>
-				<td><br><br><p align="center">이름</p><input type="text" name="cname"
-					value="${boardComments.cname }" disabled></td>
-				<td colspan="3"><textarea rows="8" cols="200" name="crecom" disabled>${boardComments.crecom }</textarea>
+			<tr>    
+				<td><br><br><br><input type="text" name="cname"
+					value="${ boardComments.get(0).getCname()}" disabled></td>
+				<td colspan="4"><textarea rows="8" cols="200" name="crecom" disabled>${ boardComments.get(0).getCrecom()}</textarea>
 				</td> 
 				
 			</tr>
+				
  
 			<tr>
 				<td colspan=4 align="center" height="30">
@@ -174,7 +175,6 @@ table {
 
 		</tbody>
 		</table>
-		</form>
 		</div>
 	</body>
 	<%

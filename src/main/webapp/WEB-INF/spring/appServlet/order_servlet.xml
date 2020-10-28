@@ -17,7 +17,8 @@
 	<context:component-scan base-package="product"/>
 	<context:component-scan base-package="member"/>
 	<context:component-scan base-package="order"/>
-	<context:component-scan base-package="orderdetail"/>	
+	<context:component-scan base-package="orderdetail"/>
+	<context:component-scan base-package="cart"/>	
 	<!-- HandlerMapping 설정 -->
 	<!-- 명시하지 않으면 기본 값은 BeanNameUrlHandlerMapping이다. -->
 	<!-- Controller 설정 -->
@@ -25,7 +26,7 @@
 	<bean id="internalResourceViewResolver"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix">
-			<value>/WEB-INF/user/</value>
+			<value>/WEB-INF/order/</value>
 		</property>
 		<property name="suffix">
 			<value>.jsp</value>

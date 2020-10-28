@@ -7,6 +7,12 @@
 		select * from orderlist where mid = #{mid}
 	</select>
 	
+	
+	<insert id="InsertNewPstock">
+      insert into orderlist(olnum,dnum,mid,pname,pimage,price,oqty)
+      values(ol_seq.nextval,#{dnum},#{mid},#{pname},#{pimage},#{price},#{oqty})
+   </insert>
+	
 </mapper>
 
 

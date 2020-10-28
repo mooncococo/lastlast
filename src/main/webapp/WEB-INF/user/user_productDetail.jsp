@@ -24,11 +24,11 @@
       padding-right: 100px;
    
    }
-   .card-text{margin-top:15%}
-   .span_area, .select_area{float:left; width:50%}
+   .span_area {float:left; width:30%}
+   .select_area{float:left; width:70%}
    .select_area select{height:39px; width:70%}
    .span_area p{
-      font-size: 26px;
+      font-size: 20px;
    }
    .product_result, .buy_btn{float:left; width:100%}
    .card-title{text-align:left;}
@@ -37,10 +37,14 @@
       padding-top: 8px;
    }
    .price-text span{
-      font-size: 20px;
+      font-size: 15px;
    }
    #selectSize{
          
+   }
+   .pnote-text{
+   		font: 15px;
+   		color: gray;
    }
 </style>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.js"></script>
@@ -291,27 +295,24 @@
                      <span>
                            ${product.pnote }  
                      </span>
-                    
+                    <hr>
                      </div>
+                     
                   
                   <div class="price-text">
+						<p>판매가                 
+                 
                         ￦<span >
                              ${product.price }  
                      </span>
                   </div>
-                  
+                  <hr>  
                   <div class="card-text">
-                  
-<!--  <form>
-<input type=text name=amount value=1>
-<input type=button value='△' onClick='javascript:this.form.amount.value++;'>
-<input type=button value='▽' onClick='javascript:this.form.amount.value--;'>
-</form> -->  
                      
                      <div class="span_area">
-                        <p>재고 확인 :</p> 
-                        <p>COLOR :</p> 
-                        <p>SIZE :</p>
+                        <p>재고수량 </p> 
+                        <p>색상 </p> 
+                        <p>사이즈 </p>
                      </div>
                      <form>
                         <%-- <input type="hidden" name="pcolor" value="${colorLists.color }"> --%>

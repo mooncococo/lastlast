@@ -15,18 +15,23 @@ table {
 }
 
 .list_main{
+	margin-top: 2vh;
+}
+.list_main2{
 	margin-top: 22vh;
 }
-
+p{
+	margin-left : 550px; 
+}
 </style>
 	<%
 	if(session.getAttribute("loginInfo2").equals("admin")){
 %>
 <body>
 	<%@ include file="../admin/admin_top_4.jsp"%>
-	<div align="center"> 
-	<h1><p align="center">문의사항</p></h1> 
-	<form action="list.bd" method="get">
+	<div class="list_main"> 
+	<h1><p>문의사항</p></h1> 
+	<form action="list.bd" method="get" align="center">
 		<select name="whatColumn">
 			<option value="all">전체
 			<option value="subject">제목
@@ -65,7 +70,7 @@ table {
 				<c:forEach items="${lists }" var="bd" varStatus="status">
 					<tr>
 						<td>${bd.num }</td>
-						<td><a href="content.bd?num=${bd.num}&ccnum=${bd.num}">${bd.subject }</a></td>
+						<td><a href="content.bd?num=${bd.num}&cnum=${bd.num}">${bd.subject }</a></td>
 						<!-- content.bd?num=${bd.num} -->
 						<td>${bd.writer }</td>
 						<td>${bd.regdate }</td>
@@ -85,9 +90,9 @@ table {
 %>
 <body>
 <%@ include file="../user/user_top_4.jsp"%>
-<div class="list_main" align="center"> 
-<h1><p align="center">문의사항</p></h1>
-<form action="list.bd" method="get">
+<div class="list_main2"> 
+<h1><p>문의사항</p></h1>
+<form action="list.bd" method="get" align="center">
 	<select name="whatColumn">
 		<option value="all">전체
 		<option value="subject">제목

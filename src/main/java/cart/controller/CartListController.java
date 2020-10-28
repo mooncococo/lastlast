@@ -21,6 +21,7 @@ import cart.model.CartDao;
 public class CartListController {
 
 	final String command = "cartlist.cart";
+	final String command2 = "cartlist2.cart";
 	final String getPage = "user_cart";
 
 	@Autowired
@@ -157,6 +158,18 @@ public class CartListController {
 
 	@RequestMapping(value=command,method=RequestMethod.POST)
 	public ModelAndView doAction2() {
+
+		List<Cart> carts = cartDao.getlistCart();
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("carts",carts);
+		mav.setViewName(getPage);
+
+		return mav;
+
+	}
+	
+	@RequestMapping(value=command2)
+	public ModelAndView doAction3() {
 
 		List<Cart> carts = cartDao.getlistCart();
 		ModelAndView mav = new ModelAndView();

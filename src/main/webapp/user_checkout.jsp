@@ -33,7 +33,7 @@
 	
 </head>
 <body>
-	<%@include file="user_top_4.jsp" %> 
+	<%@include file="user_top_3.jsp" %> 
 	<div class="checkout_main">
 		<div class="checkout_list">
 			<h3>Order List</h3>

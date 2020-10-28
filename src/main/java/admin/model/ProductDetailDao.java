@@ -16,6 +16,7 @@ public class ProductDetailDao {
 	
 	@Autowired 
 	SqlSessionTemplate sqlSessionTemplate;
+	
 	final String namespace = "admin.model.ProductDetail";
 
 	public void insertDetail(ProductDetail productDetail) {
@@ -79,8 +80,6 @@ public class ProductDetailDao {
 
 
 	public List<ProductDetail> getStock(String pname, String pcolor, String psize) {
-		
-		//System.out.println("getStock으로 넘어옴");
 		List<ProductDetail> lists = new ArrayList<ProductDetail>();
 		ProductDetail pd = new ProductDetail();
 		pd.setPname(pname);
@@ -88,8 +87,36 @@ public class ProductDetailDao {
 		pd.setPsize(psize);
 		
 		lists = sqlSessionTemplate.selectList(namespace+".GetStock", pd);
+		System.out.println("lists.getStock"+lists.get(0).getPstock());
 		return lists;
 	}
 	
+	   public List<ProductDetail> getOneCart(String pname, String pcolor, String psize){
+		      
+		      List<ProductDetail> list = new ArrayList<ProductDetail>();
+		      
+		      ProductDetail pd = new ProductDetail();
+		      pd.setPname(pname);
+		      pd.setPcolor(pcolor);
+		      pd.setPsize(psize);
+		      
+		      list = sqlSessionTemplate.selectList(namespace+".GetOneCart",pd);
+		      return list;
+		   }
+		   
+		   public List<ProductDetail> getOneDnum(int dnum){
+		      List<ProductDetail> list = new ArrayList<ProductDetail>();
+		      
+		      list = sqlSessionTemplate.selectList(namespace+".GetOneDnum",dnum);
+		      return list;
+		   }
+		   
+		   public int updatePstock(String minuspstock,int dnum){
+		      ProductDetail pd = new ProductDetail();
+		      pd.setDnum(dnum);
+		      pd.setPstock(minuspstock);
+		      int cnt = sqlSessionTemplate.update(namespace+".UpdatePstock",pd);
+		      return cnt;
+		   }
 	
 }

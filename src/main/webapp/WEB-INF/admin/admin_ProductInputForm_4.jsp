@@ -152,7 +152,7 @@ function firstChange() {
 		<td>
 			<input type="radio" name="pspec" value="new">new 	
 			<input type="radio" name="pspec" value="normal">normal 	
-			<input type="radio" name="pspec" value="sale">sale 
+			<input type="radio" name="pspec" value="best">best 
 			<form:errors cssClass="err" path="pspec" />
 		</td>
 	</tr>
@@ -160,7 +160,7 @@ function firstChange() {
 	<tr>
 		<td>비고</td>
 		<td>
-			<textarea rows="10" cols="39" maxlength="50" name="pnote"> ${product.pnote }</textarea>
+			<textarea rows="16" cols="39" maxlength="900" name="pnote"> ${product.pnote }</textarea>
 			<form:errors cssClass="err" path="pnote" />
 		</td>
 	</tr>

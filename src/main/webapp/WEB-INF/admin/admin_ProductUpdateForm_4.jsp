@@ -230,7 +230,7 @@ WEB-INF\admin\product\ProductUpdateForm.jsp 입니다.<br>
 	<tr>
 		<td>비고</td>
 		<td>
-			<textarea rows="10" cols="39" maxlength="50" name="pnote"> ${product.pnote }</textarea>
+			<textarea rows="16" cols="39" maxlength="900" name="pnote"> ${product.pnote }</textarea>
 			<form:errors cssClass="err" path="pnote" />
 		</td>
 	</tr>

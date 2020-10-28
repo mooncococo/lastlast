@@ -64,7 +64,7 @@ public class ProductDetailListController {
 	}	
 	
 	
-	@RequestMapping(value=command2,method=RequestMethod.GET)
+	@RequestMapping(value=command2,method=RequestMethod.GET, produces = "application/text; charset=utf8")  
 	@ResponseBody
 	public String doAction2(@RequestParam(value="pnum",required=true) int pnum) {
 		System.out.println("------도착------");

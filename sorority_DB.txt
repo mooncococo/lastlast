@@ -90,12 +90,12 @@ create table product(
    pnum       number primary key,
    pcode       varchar2(50) not null,       
    pcate       varchar2(50) not null,
-   pname       varchar2(50) not null,
+   pname       varchar2(100) not null,
    pimage      varchar2(30),
    price         number default 0,
    point         number default 0,
    pspec         varchar2(30),
-   pnote       varchar2(300),
+   pnote       varchar2(4000),
    pinputdate    date default sysdate   
  );
 

@@ -135,9 +135,11 @@ public class ProductDao {
        return lists;
     }
 
-   
-   //카테고리 관련 매서드 끝
-   
+   public List<Product> selectBestProduct(){
+       List<Product> lists = new ArrayList<Product>();
+       lists= sqlSessionTemplate.selectList(namespace+".GetBestProduct" );
+       return lists;
+   }
    
 }   
 

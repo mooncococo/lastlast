@@ -55,8 +55,22 @@
 	
 	<select id="GetStock" resultType="MyProductDetail">  
 		select pstock,dnum from productdetail
-		where pname=#{pname} and pcolor=#{pcolor} and psize=#{psize} 
+		where pname = #{pname} and pcolor = #{pcolor} and psize = #{psize} 
 	</select>
+	
+	<select id="GetOneCart" resultType="MyProductDetail">
+      select dnum from productdetail
+      where pname=#{pname} and pcolor=#{pcolor} and psize=#{psize}
+   </select>
+   
+   <select id="GetOneDnum" resultType="MyProductDetail">
+      select pstock from productdetail
+      where dnum=#{dnum}
+   </select>
+   
+   <update id="UpdatePstock">
+      update productdetail set pstock = #{pstock} where dnum = #{dnum} 
+   </update>
 	
 </mapper>
 

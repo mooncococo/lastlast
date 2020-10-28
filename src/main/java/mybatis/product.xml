@@ -95,5 +95,9 @@
    <select id="SearchProduct" resultType="MyProduct">
       select * from product where pname like #{keyword}
    </select>
+   
+    <select id="GetBestProduct" resultType="MyProduct">
+      select * from product where pspec = 'best' 
+   </select>
 
 </mapper>

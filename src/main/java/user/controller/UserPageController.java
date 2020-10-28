@@ -17,20 +17,22 @@ import admin.model.ProductDao;
 @Controller
 public class UserPageController {
    
-   final String command="user.uspage";
-   final String outer = "outer.uspage";
-   final String top = "top.uspage";
-   final String blouse = "blouse.uspage";
-   final String bottom = "bottom.uspage";
-   final String dress = "dress.uspage";
-   final String skirt = "skirt.uspage";
-   final String shoes = "shoes.uspage";
-   final String bag = "bag.uspage";
-   final String acc = "acc.uspage";
-   final String catePick = "catePick.uspage";
-   final String getPage="user_main_4";
-   final String getPageCate = "user_cate_4";
-   final String getPagePcate = "user_pcate_4";
+		final String command="user.uspage";
+	   final String command2 = "best.uspage";
+	   final String outer = "outer.uspage";
+	   final String top = "top.uspage";
+	   final String blouse = "blouse.uspage";
+	   final String bottom = "bottom.uspage";
+	   final String dress = "dress.uspage";
+	   final String skirt = "skirt.uspage";
+	   final String shoes = "shoes.uspage";
+	   final String bag = "bag.uspage";
+	   final String acc = "acc.uspage";
+	   final String catePick = "catePick.uspage";
+	   final String getPage="user_main_4";
+	   final String getPageBest= "user_best_4";
+	   final String getPageCate = "user_cate_4";
+	   final String getPagePcate = "user_pcate_4";
    
     @Autowired 
     ProductDao productDao;
@@ -46,6 +48,19 @@ public class UserPageController {
       mav.setViewName(getPage);
       return mav; 
    }
+   
+   @RequestMapping(value=command2,method=RequestMethod.GET )
+   public ModelAndView bestAction() {
+      
+      ModelAndView mav = new ModelAndView();
+      
+      List<Product> lists = productDao.selectBestProduct();
+      
+      mav.addObject("lists", lists);
+      mav.setViewName(getPageBest);
+      return mav; 
+   }
+   
    //카테고리 이름 눌렀을 때 나오는 화면
    @RequestMapping(value=catePick,method = RequestMethod.POST)
    public ModelAndView catePick(@RequestParam(value="pcate",required = true) String pcate,
@@ -57,23 +72,11 @@ public class UserPageController {
       List<Product> lists = productDao.selectByPcate(pcate);
       List<Product> lists2 = productDao.selectByPcode(pcode2);
       mav.addObject("lists", lists);
-      System.out.println("lists!!!!!!!! : "+lists.size());
-      String sizeyo = "";
-      if(lists.size() == 0) {
-	 sizeyo = "0";
-	 System.out.println("sizeyo 0000 ");
-	  mav.addObject("sizeyo",sizeyo);
-	  return mav;
-      }else {
-      sizeyo = "1";
-      System.out.println("sizeyo 1111 ");
       mav.addObject("lists2", lists2);
-      mav.addObject("sizeyo",sizeyo);
       mav.setViewName(getPagePcate);
       return mav;
-      }
    }
-   
+    
    
    
    @RequestMapping(value=outer,method = RequestMethod.GET)
@@ -150,14 +153,8 @@ public class UserPageController {
    
    @RequestMapping(value=shoes,method = RequestMethod.GET)
    public ModelAndView doAction8(@RequestParam(value="pcode",required = true) String pcode) {
-       System.out.println("pcode 가져와 시발라마 !!!! " +pcode);
        ModelAndView mav = new ModelAndView();
-      
       List<Product> lists = productDao.selectByCateShoes();
-      System.out.println("lists!!!!!!!! 1: "+lists.get(0).getPcode());
-      System.out.println("lists!!!!!!!! 2: "+lists.get(0).getPcate());
-      System.out.println("lists!!!!!!!! 3: "+lists.get(0).getPname());
-      System.out.println("lists!!!!!!!! 4: "+lists.get(0).getPnum());
       List<Product> lists2 = productDao.selectByPcode(pcode);
       mav.addObject("lists", lists);
       mav.addObject("lists2", lists2);

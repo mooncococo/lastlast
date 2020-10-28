@@ -7,12 +7,23 @@ body {
 	text-align: center;
 }
 
-table {
-	margin: 0 auto; 
-}
 .update {
+	align : right;      
+	width : 45%; 
+	margin-top: 3vh;
+	
+}
+.update2 {
+	align : right;      
+	width : 45%; 
 	margin-top: 20vh;
 	
+}
+
+.table {
+	width: 105%;
+	margin: 0px auto;
+    margin-left: 500px;
 }
 </style>
 
@@ -21,11 +32,11 @@ table {
 %>
 	<body>
 	<%@ include file="../admin/admin_top_4.jsp"%>
-	<div>
+	<div class="update">
 	<h1><p align="center">글 수정하기</p></h1>
-    <form:form commandName="board" method="post" action="update.bd" >   <!--  form에쓸때는 onSubmit, submit에 쓸때는 onClick -->
+    <form:form commandName="board" method="post" action="update.bd">   <!--  form에쓸때는 onSubmit, submit에 쓸때는 onClick -->
     <input type="hidden" name="num" id="num" value="${board.num }">
-    <table class="table" align="center">  
+    <table class="table">  
     <tr>
     <td colspan="2" align="right" ><a href="list.bd">글목록</a></td>
     </tr>
@@ -75,11 +86,11 @@ table {
     %>
     <body>
 	 <%@ include file="../user/user_top_4.jsp"%>
-	 <div class="update">
+	 <div class="update2">
 	 <h1><p align="center">글 수정하기</p></h1>
     <form:form commandName="board" method="post" action="update.bd" >   <!--  form에쓸때는 onSubmit, submit에 쓸때는 onClick -->
     <input type="hidden" name="num" id="num" value="${board.num }">
-    <table class="table" align="center">  
+    <table class="table">  
     <tr>
     <td colspan="2" align="right" ><a href="list.bd">글목록</a></td>
     </tr>

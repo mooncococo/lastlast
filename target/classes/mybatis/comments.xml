@@ -5,13 +5,16 @@
 
 
 <mapper namespace="board.model.BoardComments">
- 	<insert id="InsertComments">
- 		insert into comments(cnum,crecom,cname,cdate,ccnum) 
- 		values(cseq.nextval,#{crecom},#{cname},sysdate,#{ccnum})
- 	</insert>
- 	
- 	<select id="SelectComments" resultType="MyBoardComments">
- 		select * from comments where ccnum = #{num}
- 	</select>
+    <insert id="InsertComments">
+       insert into comments(cnum,crecom,cname,cdate,ccnum) 
+       values(cseq.nextval,#{crecom},#{cname},sysdate,#{cnum})
+    </insert>
+    
+    <select id="SelectComments" resultType="MyBoardComments">
+       select * from comments where ccnum = #{cnum}
+    </select>
+    
+    <update id="UpdateCom">
+       update comments set crecom = #{crecom}, cname = #{cname}  where ccnum = #{cnum}
+    </update>
 </mapper>
-

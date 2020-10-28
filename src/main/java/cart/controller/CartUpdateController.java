@@ -36,7 +36,7 @@ public class CartUpdateController {
          HttpServletResponse response
    ) throws IOException {
       
-      System.out.println("cartDao_cartnum:"+cartnum);
+      System.out.println("CartUpdateController_cartnum:"+cartnum);
       Cart cart = cartDao.getOneData(cartnum);
       String pname = cart.getPname();
       String pset = cart.getPset();
@@ -48,6 +48,7 @@ public class CartUpdateController {
       System.out.println("CartUpdateController_psize:"+psize);
       List<ProductDetail> lists = productDetailDao.getStock(pname,pcolor,psize); 
       int stock = Integer.parseInt(lists.get(0).getPstock());
+      System.out.println("stock 나와랍:" + stock);
       lists.get(0).getDnum();
       System.out.println("cartDao_pstock:"+lists.get(0).getPstock());
       System.out.println("cartDao_dnum:"+lists.get(0).getDnum());
