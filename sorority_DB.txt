@@ -91,7 +91,7 @@ create table product(
    pcode       varchar2(50) not null,       
    pcate       varchar2(50) not null,
    pname       varchar2(100) not null,
-   pimage      varchar2(30),
+   pimage      varchar2(100),
    price         number default 0,
    point         number default 0,
    pspec         varchar2(30),
@@ -118,7 +118,7 @@ create table productDetail(
    dnum       number primary key,
    pnum       number,
    pcode       varchar2(100),
-   pname       varchar2(50) not null,
+   pname       varchar2(100) not null,
    psize       varchar2(30) not null,      
    pcolor       varchar2(30) not null,
    pstock       number default 0
@@ -135,17 +135,17 @@ drop table board;
 
 create table board( 
    num number not null primary key, 
-   writer varchar2(10) not null, 
-   email varchar2(10),
-   subject varchar2(20) not null,
+   writer varchar2(100) not null, 
+   email varchar2(100),
+   subject varchar2(100) not null,
    passwd varchar2(12) not null,
    reg_date date default sysdate,
    readcount int default 0,
    ref number not null,
    re_step number not null,
    re_level number not null,
-   content varchar2(100) not null,
-   ip varchar2(15) not null
+   content varchar2(1000) not null,
+   ip varchar2(150) not null
 );
 
 drop sequence board_seq;
@@ -218,7 +218,7 @@ drop table comments;
 create table comments( 
    cnum number primary key,
    crecom varchar2(200) not null,
-   cname varchar2(20) not null,
+   cname varchar2(200) not null,
    cdate date default sysdate,
    ccnum number
 );
@@ -250,9 +250,9 @@ drop table orderlist;
 create table orderlist(
    olnum number primary key,
    dnum number not null,
-   mid varchar2(30) not null,
-   pname varchar2(50) not null,
-      pimage varchar2(30),
+   mid varchar2(300) not null,
+   pname varchar2(100) not null,
+      pimage varchar2(300),
    price number default 0,
    oqty number default 0 --(이게 수량 누적인데)
 );
@@ -272,13 +272,13 @@ create sequence cartseq start with 1 increment by 1 nocache ;
 drop table cart;
 create table cart(
 	cartnum        number primary key,
-	pimage       varchar2(30),
-	pname        varchar2(50) not null,
+	pimage       varchar2(300),
+	pname        varchar2(500) not null,
 	pset        varchar2(50) not null,
 	price          number default 0,
 	pqty          number default 0,
 	point          number default 0,
-	id           varchar2(30)
+	id           varchar2(300)
  );
 
 commit;

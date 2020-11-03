@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -33,7 +34,8 @@ public class CartUpdateController {
    public ModelAndView doAction(
          @RequestParam(value="cartnum") int cartnum,
          @RequestParam(value="pqty") int pqty,
-         HttpServletResponse response
+         HttpServletResponse response,
+         HttpSession session
    ) throws IOException {
       
       System.out.println("CartUpdateController_cartnum:"+cartnum);
@@ -52,6 +54,8 @@ public class CartUpdateController {
       lists.get(0).getDnum();
       System.out.println("cartDao_pstock:"+lists.get(0).getPstock());
       System.out.println("cartDao_dnum:"+lists.get(0).getDnum());
+      String id = (String) session.getAttribute("loginInfo2");
+      System.out.println("id 세션 설정한 거: "+id);
       
       
       if(pqty>stock) {
@@ -64,7 +68,7 @@ public class CartUpdateController {
          ModelAndView mav = new ModelAndView();
          mav.setViewName(gotoPage);
          */
-          List<Cart> carts = cartDao.getlistCart();
+          List<Cart> carts = cartDao.getlistCart(id);
          ModelAndView mav = new ModelAndView();
          mav.addObject("carts",carts);
          mav.setViewName(gotoPage);
@@ -82,7 +86,7 @@ public class CartUpdateController {
           writer.flush();
          
          
-         List<Cart> carts = cartDao.getlistCart();
+         List<Cart> carts = cartDao.getlistCart(id);  
          ModelAndView mav = new ModelAndView();
          mav.addObject("carts",carts);
          mav.setViewName(gotoPage);

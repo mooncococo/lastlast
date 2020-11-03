@@ -11,7 +11,7 @@
    
    <select id="GetCartList" resultType="MyCart">
    		select * from cart
-   		order by cartnum
+   		where id = #{id}
    </select>
    
    <delete id="DeleteCart">

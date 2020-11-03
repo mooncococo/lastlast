@@ -35,6 +35,7 @@ public class CartListController {
 	public ModelAndView doAction(HttpServletRequest request, Model model,HttpSession session) {
 		String pset = request.getParameter("pset");
 		String qty	 = request.getParameter("qty");
+		String id = (String) session.getAttribute("loginInfo2");
 		int pnum = Integer.parseInt(request.getParameter("pnum"));
 
 		System.out.println("-----CartListController :cartlist 요청 들어옴 -----");
@@ -64,7 +65,7 @@ public class CartListController {
 		model.addAttribute("product", product);
 
 
-		List<Cart> oldCart = cartDao.getlistCart();
+		List<Cart> oldCart = cartDao.getlistCart(id);
 
 		System.out.println("기존의 장바구니:"+oldCart);
 		System.out.println("기존 장바구니 크기:"+oldCart.size());
@@ -144,7 +145,7 @@ public class CartListController {
 		}//큰for
 		
 
-		List<Cart> carts = cartDao.getlistCart();
+		List<Cart> carts = cartDao.getlistCart(id);
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("carts",carts);
 		mav.setViewName(getPage);
@@ -157,9 +158,9 @@ public class CartListController {
 
 
 	@RequestMapping(value=command,method=RequestMethod.POST)
-	public ModelAndView doAction2() {
-
-		List<Cart> carts = cartDao.getlistCart();
+	public ModelAndView doAction2(HttpSession session) {
+		String id = (String) session.getAttribute("loginInfo2");
+		List<Cart> carts = cartDao.getlistCart(id);
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("carts",carts);
 		mav.setViewName(getPage);
@@ -169,9 +170,9 @@ public class CartListController {
 	}
 	
 	@RequestMapping(value=command2)
-	public ModelAndView doAction3() {
-
-		List<Cart> carts = cartDao.getlistCart();
+	public ModelAndView doAction3(HttpSession session) {
+		String id = (String) session.getAttribute("loginInfo2");
+		List<Cart> carts = cartDao.getlistCart(id);
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("carts",carts);
 		mav.setViewName(getPage);

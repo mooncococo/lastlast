@@ -22,10 +22,10 @@ public class CartDao {
 		
 	}
 
-	public List<Cart> getlistCart() {
+	public List<Cart> getlistCart(String id) {
 		List<Cart> lists = new ArrayList<Cart>();
 		
-		lists = sqlSessionTemplate.selectList(namespace+".GetCartList");
+		lists = sqlSessionTemplate.selectList(namespace+".GetCartList",id);
 		return lists;
 		
 		

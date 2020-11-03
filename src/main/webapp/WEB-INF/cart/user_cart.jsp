@@ -77,11 +77,10 @@ tbody {
             "&pset="+pset+"&price="+price+"&pqty="+pqty+"&id="+id;
    }
    
-   function orderAll(cartnum,pimage,pname,pset,price,pqty,id){
-	   alert("주문하기 완료");
-	      location.href="orderAll.od?cartnum="+cartnum+"&pimage="+pimage+"&pname="+pname+
-	            "&pset="+pset+"&price="+price+"&pqty="+pqty+"&id="+id;	   
-	   
+   function orderAll(){
+      alert("전체상품 주문하기 완료");
+         location.href="orderAll.od?";      
+      
    }
 
 </script>
@@ -126,7 +125,7 @@ tbody {
                   <th scope="col">선택</th>
                </tr>
             </thead>
-
+			<c:set var="total" value="0"/>
             <c:forEach items="${carts }" var="carts" varStatus="status">
                <tbody>
                   <tr>
@@ -152,7 +151,7 @@ tbody {
                      <td style="vertical-align: middle;">기본배송</td>
                      <td style="vertical-align: middle;">
                         ${carts.price * carts.pqty}
-                        <input type="hidden" name ="totalprice" value="${carts.price * carts.pqty}">
+                        <c:set var= "total" value="${total + (carts.price * carts.pqty)}"/>
                      </td>
                      
                      
@@ -180,12 +179,14 @@ tbody {
                   <th scope="col">결제 예정 금액</th>
                </tr>
             </thead>
+            <c:set var = "total" value = "0" />
+            <c:forEach items="${carts }" var="carts" varStatus="status">
             <tbody>
                <tr>
-                  <th scope="row" style="vertical-align: middle;">￦80,000</th>
+                  <th scope="row" style="vertical-align: middle;"><c:out value="${total}"/></th>
                   <td style="vertical-align: middle;">￦2,500</td>
                   <td style="vertical-align: middle;">￦82,500</td>
-               </tr>
+               </tr>  
                <tr>
                   <td colspan="3">
                      <button type="button" class="btn btn-primary cbtn" onclick="orderAll()">전체상품주문</button>
@@ -194,6 +195,7 @@ tbody {
                   </td>
                </tr>
             </tbody>
+            </c:forEach>
          </table>
       </div>
    </div>

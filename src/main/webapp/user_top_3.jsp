@@ -41,6 +41,7 @@
 }
 .top p{
    font-size: 2em;
+   margin: 0 auto;
 }
 .nav-color {
    /* background: #fff3e0; */

@@ -16,11 +16,11 @@ MemberFindIdCompleted.jsp
 #d_top {
 	width: 25%;
 	margin: 0 auto;
-	margin-top: 9vh;
+	margin-top: 27vh; 
 }
 </style>
 <script type="text/javascript">
-	function goLogin(id){
+	function goLogin(mid){
 		location.href="loginForm1.me?mid="+mid;
 	}
 	

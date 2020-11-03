@@ -12,6 +12,9 @@
 		margin-top: 10vh; 
 	 
 	}
+	.top_margin{
+		margin-top: 35vh;  
+	}
 </style>
 	
 <script type="text/javascript" src="../../js/jquery.js"></script>
@@ -38,6 +41,7 @@
 
 
 <form action="findId.me" method="post">
+<div class="top_margin">
 	<table align="center" width="40%" class="table">
 		<tr>
 			<td height="50" colspan="2" >   
@@ -89,5 +93,5 @@
 
 
 
-
+</div>
 </form>   
